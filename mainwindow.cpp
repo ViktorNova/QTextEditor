@@ -76,7 +76,7 @@ void MainWindow::closeEvent(QCloseEvent *e){
     if( ! this->isWindowModified())
         e->accept();
     else{
-        int ans = QMessageBox::warning(this, "Documento modificado", "El documento ha sido modificado, desea guardar los cambios?\n Perdera todos los cambios no guardados.",
+        int ans = QMessageBox::warning(this, "Modified document", "This file has not been saved, are you sure you want to quit? Any unsaved changes will be lost.",
                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::No);
         switch(ans){
         case QMessageBox::Yes:
@@ -108,7 +108,7 @@ void MainWindow::on_actionSelectFont_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-    QMessageBox::about(this, "Acerca de QTextEditor", "QTextEditor es una aplicacion para editar archivos de texto equipado con funcionalidades superiores que lo diferencian del resto.\n\nDesarrollado por Michello Corporation.");
+    QMessageBox::about(this, "About QTextEditor", "QTextEditor is an application to edit text files outfitted with superior features that differentiate it from the rest.\n\nPowered by Michello Corporation.\n\nEnglish translation by Viktor Nova");
 }
 
 void MainWindow::loadFile(const QString &fileName){
@@ -118,7 +118,7 @@ void MainWindow::loadFile(const QString &fileName){
     }
     QFile file(fileName);
     if( !file.open(QFile::ReadOnly | QIODevice::Text) ){
-        QMessageBox::warning(this, "Error", "El archivo no se pudo abrir");
+        QMessageBox::warning(this, "Error", "The file could not be opened");
         return;
     }
     QTextStream text(&file);
@@ -137,8 +137,8 @@ void MainWindow::setFileName(const QString &fileName){
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filename = QFileDialog::getOpenFileName(this, "Abrir documento",
-                                QDir::currentPath(), "Archivos de Texto (*.txt)");
+    QString filename = QFileDialog::getOpenFileName(this, "Open file",
+                                QDir::currentPath(), "Text Files (*.txt)");
     if(filename.isNull())
         return;
     if( m_fileName.isNull() && !isWindowModified())
@@ -150,8 +150,8 @@ void MainWindow::on_actionOpen_triggered()
 }
 
 bool MainWindow::saveFileAs(){
-    QString filename = QFileDialog::getSaveFileName(this, "Guardar documento",
-                                    m_fileName.isNull()?QDir::currentPath():m_fileName, "Archivos de Texto (*.txt)");
+    QString filename = QFileDialog::getSaveFileName(this, "Save File",
+                                    m_fileName.isNull()?QDir::currentPath():m_fileName, "Text Files (*.txt)");
     if(filename.isNull())
         return false;
     setFileName(filename);
@@ -163,7 +163,7 @@ bool MainWindow::saveFile(){
         return saveFileAs();
     QFile file(m_fileName);
     if(!file.open(QFile::WriteOnly | QIODevice::Text)){
-        QMessageBox::warning(this, "Error", "Se produjo un error al intentar guardar el archivo");
+        QMessageBox::warning(this, "Error", "An error occurred while trying to save the file");
         setFileName(QString());
         return false;
     }
