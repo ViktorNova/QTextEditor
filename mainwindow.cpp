@@ -76,7 +76,7 @@ void MainWindow::closeEvent(QCloseEvent *e){
     if( ! this->isWindowModified())
         e->accept();
     else{
-        int ans = QMessageBox::warning(this, "Modified document", "This file has not been saved, are you sure you want to quit? Any unsaved changes will be lost.",
+        int ans = QMessageBox::warning(this, "Warning - unsaved changes", "This file has not been saved, would you like to save it before quitting? If you choose no, any unsaved changes will be lost.",
                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::No);
         switch(ans){
         case QMessageBox::Yes:
