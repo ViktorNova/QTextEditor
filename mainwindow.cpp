@@ -138,7 +138,9 @@ void MainWindow::setFileName(const QString &fileName){
 void MainWindow::on_actionOpen_triggered()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file",
-                                QDir::currentPath(), "Text Files (*.txt)");
+                                QDir::currentPath(), "Text Files (*.*)");
+                                
+                                
     if(filename.isNull())
         return;
     if( m_fileName.isNull() && !isWindowModified())
@@ -151,7 +153,7 @@ void MainWindow::on_actionOpen_triggered()
 
 bool MainWindow::saveFileAs(){
     QString filename = QFileDialog::getSaveFileName(this, "Save File",
-                                    m_fileName.isNull()?QDir::currentPath():m_fileName, "Text Files (*.txt)");
+                                    m_fileName.isNull()?QDir::currentPath():m_fileName, "All Files (*.*)");
     if(filename.isNull())
         return false;
     setFileName(filename);
