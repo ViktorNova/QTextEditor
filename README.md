@@ -1,9 +1,11 @@
 #QTextEditor
 ##A simple text editor in pure QT
 
+This is a basic Notepad clone in pure QT / C++ -it doesn't really use any custom C++ stuff.
+It works with QT4 or QT5 
 
-This is a basic Notepad clone in pure QT / C++ (doesn't really use any custom C++ stuff)
-It works with QT4 or QT5
+![Screenshot](https://cloud.githubusercontent.com/assets/3234333/5732653/830ee45e-9b4a-11e4-8361-df0a2c8bd204.png)
+
 
 ##To build
 
